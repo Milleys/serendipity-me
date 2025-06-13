@@ -14,7 +14,7 @@
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
                     Discover Your
-                    <span class="text-blue-600 block">Serendipity</span>
+                    <span class="text-purple-600 block">Serendipity</span>
                 </h1>
                 <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                     Find unexpected connections, moments of joy, and meaningful experiences 
@@ -24,12 +24,12 @@
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <button @click="showLogin = true"
-                        class="px-8 py-3 text-lg border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition">
+                        class="px-8 py-3 text-lg border border-purple-600 text-purple-600 hover:bg-purple-50 rounded-lg font-medium transition">
                         Sign In
                     </button>
 
                     <button @click="showSignup = true" 
-                        class="px-8 py-3 text-lg bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition">
+                        class="px-8 py-3 text-lg bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition">
                         Get Started
                     </button>
                 </div>
@@ -38,9 +38,7 @@
             <!-- Hero Image -->
             <div class="mt-16 relative">
                 <div class="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl shadow-2xl flex items-center justify-center">
-                    <div class="w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center">
-                        <span class="text-white text-3xl font-bold">S</span>
-                    </div>
+                    
                 </div>
             </div>
         </div>

@@ -41,15 +41,15 @@
     <div class="w-full md:w-2/4 flex flex-col items-center justify-center">
         <!-- Main Serendipity Image -->
         <div class="relative mb-8">
-            <div class="w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
+             <div class="w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
                 <img
-                    src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=400&h=400&fit=crop&crop=center"
+                    src="{{asset('images/serendipity_cover.jpg')}}"
                     alt="Serendipity moment"
                     class="w-full h-full object-cover"
                 />
 
                 <!-- Overlay -->
-                <div class="absolute inset-0 bg-black bg-opacity-10 rounded-2xl"></div>
+                <div class="absolute inset-0 rounded-2xl"></div>
 
                 <!-- Sparkle Icon -->
                 <div class="absolute top-4 right-4">
@@ -64,7 +64,7 @@
             @csrf
         <!-- Serendipity Button -->
          <input type="hidden" name="username" value = "John Wilson">
-        <button type = "submit" class="group bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center space-x-2">
+        <button type = "submit" class="group bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center space-x-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" />
             </svg>

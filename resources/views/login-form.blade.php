@@ -51,7 +51,7 @@
 
             <button 
                 type="submit" 
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition"
+                class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition"
             >
                 Sign In
             </button>
@@ -64,7 +64,7 @@
                 Don't have an account? 
                 <button 
                     @click="showLogin = false; showSignup = true" 
-                    class="text-blue-600 hover:text-blue-700 font-medium ml-1"
+                    class="text-purple-600 hover:text-purple-700 font-medium ml-1"
                 >
                     Sign up
                 </button>

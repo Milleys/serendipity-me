@@ -3,9 +3,12 @@
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->
             <div class="flex-shrink-0">
-                <h1 class="text-2xl font-bold text-gray-900 tracking-tight">
-                    SerendipityMe
+                <a href="{{route('dashboard-page')}}">
+                <h1 class="text-2xl font-bold tracking-tight">
+                    <span class="text-purple-700">Serendipity</span><span class="text-purple-600">Me</span>
                 </h1>
+
+                </a>
             </div>
 
             <!-- Desktop Menu -->

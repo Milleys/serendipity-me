@@ -12,7 +12,7 @@
 
         <!-- Header -->
         <div class="text-center px-6 pt-6">
-            <h2 class="text-2xl font-bold text-gray-900">Join SerendipityMe</h2>
+            <h2 class="text-2xl font-bold"><span class = "text-gray-900">Join Serendipity</span><span class = "text-purple-600">Me</span></h2>
             <p class="text-gray-600">Create your account to get started</p>
         </div>
 
@@ -80,7 +80,7 @@
 
             <!-- Submit Button -->
             <button type="submit"
-                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition">
+                    class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-md transition">
                 Create Account
             </button>
         </form>
@@ -91,7 +91,7 @@
             <p class="text-sm text-gray-600">
                 Already have an account?
                 <button @click="showSignup = false; showLogin = true"
-                        class="text-blue-600 hover:text-blue-700 font-medium">
+                        class="text-purple-600 hover:text-purple-700 font-medium">
                     Sign in
                 </button>
             </p>
