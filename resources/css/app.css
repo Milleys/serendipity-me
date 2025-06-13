@@ -9,3 +9,43 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+
+
+:root {
+    --color-primary: #0a00d1;  /* Default theme: Indigo */
+    --color-accent: #EC4899;
+    --color-bg: #ffffff;
+    --color-text: #1f2937;
+  }
+  
+  /* Optional Dark or Alternate Theme */
+  [data-theme="pastel"] {
+    --color-primary: #F472B6;
+    --color-accent: #A78BFA;
+    --color-bg: #FDF6F6;
+    --color-text: #4B5563;
+  }
+  
+  [data-theme="dark"] {
+    --color-primary: #0ea5e9;
+    --color-accent: #9333ea;
+    --color-bg: #111827;
+    --color-text: #ffffff;
+  }
+
+  
+@layer utilities {
+    .bg-theme {
+      background-color: var(--color-bg);
+    }
+    .text-theme {
+      color: var(--color-text);
+    }
+    .bg-primary {
+      background-color: var(--color-primary);
+    }
+    .text-primary {
+      color: var(--color-primary);
+    }
+  }
