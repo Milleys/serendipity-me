@@ -34,6 +34,12 @@ Route::get('/register', function () {
     return view('register');
 })->name("register");
 
+//dashboard
+Route::get('/complete-profile', function () {
+    return view('complete-profile');
+})->name("complete-profile");
+
+
 
 //Post route example
 Route::post("/submit", function(Request $request){
