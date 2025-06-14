@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\RegisterUser;
+use App\Http\Controllers\LoginUser;
 
 Route::get('/', function () {
     return view('home');
-})->name("home-page");
+})->middleware('auth')->name('home-page');
 
 //named routes
 Route::get('/dashboard', function () {
@@ -24,7 +25,7 @@ Route::get('/contactus', function () {
 
 //dashboard
 Route::get('/login', function () {
-    return view('login');
+    return view('dashboard');
 })->name("login");
 
 
@@ -43,21 +44,12 @@ Route::post("/submit", function(Request $request){
 
 
 
-//Post route example
-Route::post("/register", function(Request $request){
+Route::post('/register-submit', [RegisterUser::class, 'store'])->name('register-submit');
+Route::post('/login', [LoginUser::class, 'authenticate'])->name('login-user');
 
-    $request->validate([
-        'username' => 'required|min:3|max:30',
-        'email' => 'required|min:3|max:30|email',
-        'password' => 'required|min:8|confirmed',
-    ]);
-
-    $username = "@".$request->input("username");
-    $fullname = $request->input("full_name");
-    $email = $request->input("email");
-    $password = $request->input("password");
-    $confirm_password = $request->input("password_confirmation");
-
-    return "your full name is $username";
- })->name("register-submit");
- 
+Route::post('/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/dashboard');
+})->name('logout');

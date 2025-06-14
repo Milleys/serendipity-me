@@ -6,6 +6,29 @@
     @include('login-form')
     @include('signup-form')
 
+    @if(session('login_error'))
+    <div
+        x-data="{ open: true }"
+        x-show="open"
+        x-cloak
+        class="fixed inset-0 flex items-center  bg-black/50 justify-center z-50"
+    >
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-semibold text-lg"><span class ="text-gray-700">Login</span><span class ="text-purple-600"> Failed</span></h2>
+                <button @click="open = false" class="text-gray-500 hover:text-black text-2xl">&times;</button>
+            </div>
+            <p class="text-gray-700 text-sm mb-4">{{ session('login_error') }}</p>
+            <button
+                @click="open = false"
+                class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded w-full"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+@endif
+
 
     {{-- Main Dashboard Page Content --}}
     <div class="relative overflow-hidden bg-white">

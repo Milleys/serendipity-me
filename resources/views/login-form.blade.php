@@ -22,7 +22,7 @@
         </div>
 
         <!-- Form -->
-        <form method="POST" action="{{ route('login') }}" class="space-y-4 px-6 py-6">
+        <form method="POST" action="{{ route('login-user') }}" class="space-y-4 px-6 py-6">
             @csrf
 
             <div>
@@ -56,6 +56,13 @@
                 Sign In
             </button>
         </form>
+
+
+
+{{-- Include the modal component --}}
+@include('password-error-modal')
+<x-password-error-modal />
+
 
 
         <!-- Switch to Signup -->

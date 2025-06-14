@@ -5,7 +5,7 @@
             <div class="flex-shrink-0">
                 <a href="{{route('dashboard-page')}}">
                 <h1 class="text-2xl font-bold tracking-tight">
-                    <span class="text-purple-700">Serendipity</span><span class="text-purple-600">Me</span>
+                    <span class="text-gray-900">Serendipity</span><span class="text-purple-600">Me</span>
                 </h1>
 
                 </a>

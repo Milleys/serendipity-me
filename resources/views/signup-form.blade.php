@@ -17,7 +17,7 @@
         </div>
 
         <!-- Form -->
-        <form action="{{ route('register-submit') }}" method="post" class="space-y-4 px-6 py-6">
+        <form action="{{ route('register-submit') }}" method="POST" class="space-y-4 px-6 py-6">
             @csrf
 
             <!-- Username with @ prefix -->
@@ -39,7 +39,7 @@
                 <label for="full_name" class="block font-medium text-gray-700 mb-1">Full Name</label>
                 <input type="text"
                     id="full_name"
-                    name="full_name"
+                    name="name"
                     required
                     placeholder="Enter your full name"
                     class="w-full border border-gray-300 rounded-md shadow-sm px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"/>
