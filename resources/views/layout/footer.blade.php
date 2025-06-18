@@ -1,5 +1,5 @@
-<footer class="h-10 border-t border-gray-100 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<footer class="h-10 border-t border-gray-100 mt-auto bg-white">
+    <div class="bg-white max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <!-- Logo/Brand -->
             <div class="flex items-center">

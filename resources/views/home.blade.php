@@ -11,7 +11,7 @@
 </div>
     <!-- Profile Section (left) -->
     <div class="w-full md:w-1/6">
-        <div class="rounded-lg border border-gray-100 p-6 shadow-sm">
+        <div class="rounded-lg border bg-white border-gray-100 p-6 shadow-sm">
             <div class="flex flex-col items-center">
                 <!-- Profile Avatar -->
                 <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-4">
@@ -37,12 +37,20 @@
                 </div>
                 <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit">Logout</button>
+                <button type="submit"
+                    class="inline-flex items-center gap-2 px-2 py-1 bg-red-400 text-white rounded-lg hover:bg-red-500 transition-colors duration-200 text-sm font-medium shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1" />
+                    </svg>
+                    Logout
+                </button>
             </form>
             </div>
-        </div>
+        </div> <!-- end of profile box -->
+        @include('layout.quick-stats')
     </div>
-
     <!-- Main Content Section (right) -->
     <div class="w-full md:w-2/4 flex flex-col items-center justify-center">
         <!-- Main Serendipity Image -->
@@ -70,7 +78,8 @@
         
         @if(session('activityData'))
                     <div class = "mb-2">
-                        <p class=" text-lg text-purple-400 font-medium italic">"{{ session('activityData.activity') }}"</p>
+                        <p class=" text-lg text-center text-purple-400 font-medium italic">"{{ session('activityData.activity') }}"</p>
+                        <p class=" text-lg text-center text-purple-400 font-medium italic">{{ session('activityData.description') }}</p>
                     </div>
                 @endif
 
@@ -80,7 +89,7 @@
             @csrf
         <!-- Serendipity Button -->
          
-        <button type = "submit" class="group bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center space-x-2">
+        <button type = "submit" class="cursor-pointer group bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center space-x-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" />
             </svg>
@@ -94,9 +103,10 @@
             Discover unexpected moments and create beautiful memories
         </p>
 
-      
+       
 
 </div>
+@include('layout.upcoming-events')
 
 @endsection
 

@@ -11,11 +11,23 @@ class SerendipityController extends Controller
 
     public function fetchActivity(Request $request)
         {
-            $activityResponse = Http::get('https://bored-api.appbrewery.com/random');
+                $jsonPath = public_path('storage/activities.json');
+                $jsonContent = file_get_contents($jsonPath);
+                $activitiesArray = json_decode($jsonContent, true);
 
-            if ($activityResponse->successful()) {
-                $activityData = $activityResponse->json();
+                if (!$activitiesArray || !is_array($activitiesArray)) {
+                    return back()->with('activityData', [
+                        'activity' => 'Invalid or empty JSON structure.',
+                        'type' => 'error',
+                    ]);
+                }
+
+                // Pick a random activity
+                $activityData = $activitiesArray[array_rand($activitiesArray)];
+
                 $activity = $activityData['activity'];
+                $description = $activityData['description'];
+                $for_couples = $activityData['for_couples'];
 
                 // Get image from Pexels
                 $pexelsResponse = Http::withHeaders([
@@ -27,19 +39,17 @@ class SerendipityController extends Controller
 
                 $imageUrl = null;
                 if ($pexelsResponse->successful() && count($pexelsResponse['photos']) > 0) {
-                    $imageUrl = $pexelsResponse['photos'][0]['src']['medium']; // or 'original', 'large'
+                    $imageUrl = $pexelsResponse['photos'][0]['src']['large']; // or 'original', 'large'
                 }
 
                 return back()->with([
                     'activityData' => $activityData,
                     'imageUrl' => $imageUrl,
+                    'description' => $description,
                 ]);
             }
 
-            return back()->with('activityData', [
-                'activity' => 'Could not fetch activity.',
-                'type' => 'error',
-            ]);
-        }
+            
+        
 
 }

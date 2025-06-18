@@ -12,7 +12,8 @@
 
 </head>
 
-<body class="min-h-screen flex flex-col antialiased">
+<body class="min-h-screen flex flex-col antialiased bg-gray-100">
+
    @include('layout.navigation')
 
 
