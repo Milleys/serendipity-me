@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RegisterUser;
 use App\Http\Controllers\LoginUser;
+use App\Http\Controllers\SerendipityController;
 
 Route::get('/', function () {
     return view('home');
@@ -40,13 +41,8 @@ Route::get('/complete-profile', function () {
 })->name("complete-profile");
 
 
-
-//Post route example
-Route::post("/submit", function(Request $request){
-   $username = $request->input("username");
-   return $username;
-})->name("Serendipity-submit");
-
+//My Serendipity Button
+Route::post('/serendipity-submit', [SerendipityController::class, 'fetchActivity'])->name('Serendipity-submit');
 
 
 
