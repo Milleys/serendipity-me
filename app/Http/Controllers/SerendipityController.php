@@ -81,8 +81,18 @@ class SerendipityController extends Controller
         public function show()
         {
             $user = Auth::user();
-            $current = $user->serendipities()->latest()->first(); // Most recent serendipity
-            $past = $user->serendipities()->orderBy('created_at', 'desc')->skip(1)->take(10)->get(); // Past serendipities
+            $current = $user->serendipities()
+                        ->whereNull('completed_at')
+                        ->latest()
+                        ->first(); // Most recent serendipity
+
+            $past = $user->serendipities()
+                        ->whereNotNull('completed_at')
+                        ->orderBy('created_at', 'desc')
+                        ->skip(0)
+                        ->take(10)
+                        ->get();
+ // Past serendipities
 
             return view('profile', [
                 'currentSerendipity' => $current,
