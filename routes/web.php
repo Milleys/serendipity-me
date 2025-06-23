@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginUser;
 use App\Http\Controllers\SerendipityController;
 
 
+
 //get routes
 Route::get('/', function () {
     if (auth()->check()) {
@@ -54,6 +55,9 @@ Route::get('/complete-profile', function () {
     return view('complete-profile');
 })->name("complete-profile");
 
+
+//dashboard
+Route::get('/profile', [SerendipityController::class, 'show'])->name('profile')->middleware('auth');
 
 
 

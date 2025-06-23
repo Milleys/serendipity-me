@@ -17,6 +17,12 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+     public function serendipities()
+        {
+            return $this->hasMany(Serendipity::class);
+        }
+        
     protected $fillable = [
         'username',
         'name',

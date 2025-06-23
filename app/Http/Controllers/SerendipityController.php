@@ -69,7 +69,23 @@ class SerendipityController extends Controller
             ]);
 
             return back()->with('success', 'Serendipity saved successfully!');
-        }   
+        } 
+        
+       
+
+        public function show()
+        {
+            $user = Auth::user();
+            $current = $user->serendipities()->latest()->first(); // Most recent serendipity
+            $past = $user->serendipities()->orderBy('created_at', 'desc')->skip(1)->take(10)->get(); // Past serendipities
+
+            return view('profile', [
+                'currentSerendipity' => $current,
+                'pastSerendipities' => $past,
+            ]);
+        }
+
+        
         
 
 }
