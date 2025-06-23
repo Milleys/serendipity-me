@@ -12,7 +12,7 @@ class SerendipityController extends Controller
     //
 
     public function fetchActivity(Request $request)
-        {
+            {
                 $jsonPath = public_path('storage/activities.json');
                 $jsonContent = file_get_contents($jsonPath);
                 $activitiesArray = json_decode($jsonContent, true);
@@ -31,19 +31,23 @@ class SerendipityController extends Controller
                 $description = $activityData['description'];
                 $for_couples = $activityData['for_couples'];
 
-                // Get image from Pexels
-                $pexelsResponse = Http::withHeaders([
-                    'Authorization' => 'wZtv5TUs6lnxyHLPNyx5lqv8zS5qxaHjPWvwXkVeu14UOaaHk4WG2v0S'
-                ])->get('https://api.pexels.com/v1/search', [
-                    'query' => $activity,
-                    'per_page' => 1,
+                // Get image from Pixabay
+                $pixabayResponse = Http::get('https://pixabay.com/api/', [
+                    'key' => '50924618-29a39a9600a657ed5fe9dc9db', // Replace with your actual API key
+                    'q' => $activity,
+                    'image_type' => 'illustration',
+                    'safesearch' => 'true',
+                    'per_page' => 5,
                 ]);
 
                 $imageUrl = null;
-                if ($pexelsResponse->successful() && count($pexelsResponse['photos']) > 0) {
-                    $imageUrl = $pexelsResponse['photos'][0]['src']['large']; // or 'original', 'large'
+                if ($pixabayResponse->successful() && count($pixabayResponse['hits']) > 0) {
+                    $imageUrl = $pixabayResponse['hits'][0]['largeImageURL']; // or 'previewURL' for smaller version
                 }
-
+                if (!$pixabayResponse->successful()) {
+                    dd($pixabayResponse->status(), $pixabayResponse->body());
+                }
+                
                 return back()->with([
                     'activityData' => $activityData,
                     'imageUrl' => $imageUrl,
@@ -68,7 +72,7 @@ class SerendipityController extends Controller
                 'description' => $validated['description'] ?? null,
             ]);
 
-            return back()->with('success', 'Serendipity saved successfully!');
+            return $this->show();
         } 
         
        
