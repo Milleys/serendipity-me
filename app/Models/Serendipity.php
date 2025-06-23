@@ -20,6 +20,8 @@ class Serendipity extends Model
         'rating',
         'visibility',
         'completed_at',
+        'comment',
+    
     ];
 
     public function user()

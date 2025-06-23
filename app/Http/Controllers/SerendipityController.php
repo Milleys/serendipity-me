@@ -11,7 +11,7 @@ class SerendipityController extends Controller
 {
     //
 
-    public function fetchActivity(Request $request)
+         public function fetchActivity(Request $request)
             {
                 $jsonPath = public_path('storage/activities.json');
                 $jsonContent = file_get_contents($jsonPath);
@@ -38,6 +38,7 @@ class SerendipityController extends Controller
                     'image_type' => 'illustration',
                     'safesearch' => 'true',
                     'per_page' => 5,
+                    'page' => 1,
                 ]);
 
                 $imageUrl = null;
@@ -72,7 +73,7 @@ class SerendipityController extends Controller
                 'description' => $validated['description'] ?? null,
             ]);
 
-            return $this->show();
+            return redirect()->back()->with('success', 'Serendipity updated successfully!');
         } 
         
        
@@ -88,6 +89,30 @@ class SerendipityController extends Controller
                 'pastSerendipities' => $past,
             ]);
         }
+
+
+
+
+        public function update(Request $request, $id)
+            {
+                $request->validate([
+                    'rating' => 'nullable|numeric|min:0|max:5',
+                    'comment' => 'nullable|string',
+                    // Add any other fields you want to update
+                ]);
+
+                $serendipity = Serendipity::where('id', $id)
+                    ->where('user_id', auth()->id()) // Ensure user owns the serendipity
+                    ->firstOrFail();
+
+                $serendipity->update([
+                    'completed_at' => now(),
+                    'rating' => $request->input('rating'),
+                    'comment' => $request->input('comment'),
+                ]);
+
+                return redirect()->back()->with('success', 'Serendipity updated successfully!');
+            }
 
         
         

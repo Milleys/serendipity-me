@@ -73,6 +73,9 @@ Route::post('/save-serendipity', [SerendipityController::class, 'save'])
     ->name('serendipity.save')
     ->middleware('auth');
 
+//update serendipity
+Route::put('/serendipities/{id}', [SerendipityController::class, 'update'])->name('serendipities.update');
+
 Route::post('/logout', function (Request $request) {
     Auth::logout();
     $request->session()->invalidate();
