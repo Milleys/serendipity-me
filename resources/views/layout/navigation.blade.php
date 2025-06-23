@@ -45,6 +45,9 @@
                 <a href="{{route("home-page")}}" class="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium transition-colors duration-200">
                     Home
                 </a>
+                <a href="{{route("profile")}}" class="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium transition-colors duration-200">
+                    Profile
+                </a>
                 <a href="{{route("contactus-page")}}" class="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium transition-colors duration-200">
                     Contact Us
                 </a>

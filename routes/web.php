@@ -56,7 +56,7 @@ Route::get('/complete-profile', function () {
 })->name("complete-profile");
 
 
-//dashboard
+//to profile
 Route::get('/profile', [SerendipityController::class, 'show'])->name('profile')->middleware('auth');
 
 
