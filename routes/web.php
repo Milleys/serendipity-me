@@ -80,7 +80,7 @@ Route::get('/serendipity/{id}', [SerendipityController::class, 'share'])->name('
 
 
 //update serendipity
-Route::put('/serendipities/{id}', [SerendipityController::class, 'update'])->name('serendipities.update');
+Route::put('/serendipities/{id}', [SerendipityController::class, 'update'])->middleware('auth')->name('serendipities.update');
 
 Route::post('/logout', function (Request $request) {
     Auth::logout();
