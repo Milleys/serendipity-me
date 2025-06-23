@@ -21,6 +21,7 @@ class Serendipity extends Model
         'visibility',
         'completed_at',
         'comment',
+        'image_path',
     
     ];
 

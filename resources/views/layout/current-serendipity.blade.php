@@ -41,12 +41,17 @@
 
             <div class="flex items-center space-x-4 text-sm text-gray-500">
                 <div class="flex items-center space-x-1">
+                @if($serendipity->completed_at == null)
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M8 7V3m8 4V3m-9 4h10M5 11h14M5 17h14M5 21h14M3 5h18a2 2 0 012 2v14a2 2 0 01-2 2H3a2 2 0 01-2-2V7a2 2 0 012-2z" />
                     </svg>
-                    @if($serendipity->completed_at == null)
+                   
                     <span>{{ \Carbon\Carbon::parse($serendipity->created_at)->diffForHumans() }}</span>
                     @else
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+
                     <span>{{ \Carbon\Carbon::parse($serendipity->completed_at)->diffForHumans() }}</span>
                     @endif
                 </div>
@@ -78,7 +83,7 @@
                             <input 
                                 type="file" 
                                 accept="image/*" 
-                                name="images[]"
+                                name="image"
                                 class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                                 @change="
                                     const file = $event.target.files[0];

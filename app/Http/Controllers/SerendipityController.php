@@ -98,6 +98,7 @@ class SerendipityController extends Controller
                 $request->validate([
                     'rating' => 'nullable|numeric|min:0|max:5',
                     'comment' => 'nullable|string',
+                    'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                     // Add any other fields you want to update
                 ]);
 
@@ -105,11 +106,26 @@ class SerendipityController extends Controller
                     ->where('user_id', auth()->id()) // Ensure user owns the serendipity
                     ->firstOrFail();
 
-                $serendipity->update([
-                    'completed_at' => now(),
-                    'rating' => $request->input('rating'),
-                    'comment' => $request->input('comment'),
-                ]);
+                // Handle image upload
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                
+                    $filename = time() . '.' . $image->getClientOriginalExtension();
+                
+                    // Save to public/images/uploads (NOT storage)
+                    $destinationPath = public_path('images/uploads');
+                    $image->move($destinationPath, $filename);
+                
+                    // Save relative path to DB
+                    $serendipity->image_path = 'images/uploads/' . $filename;
+                }
+                    
+
+                // Update other fields
+                $serendipity->completed_at = now();
+                $serendipity->rating = $request->input('rating');
+                $serendipity->comment = $request->input('comment');
+                $serendipity->save();
 
                 return redirect()->back()->with('success', 'Serendipity updated successfully!');
             }
