@@ -47,7 +47,9 @@ Route::middleware('guest')->group(function() {
 
 });
 
-
+Route::get('/serendipity-story', function () {
+    return view('serendipity-story');
+})->name('serendipity-story');
 
 
 //dashboard
@@ -72,6 +74,10 @@ Route::post('/login', [LoginUser::class, 'authenticate'])->name('login-user');
 Route::post('/save-serendipity', [SerendipityController::class, 'save'])
     ->name('serendipity.save')
     ->middleware('auth');
+
+//share
+Route::get('/serendipity/{id}', [SerendipityController::class, 'share'])->name('serendipity.show');
+
 
 //update serendipity
 Route::put('/serendipities/{id}', [SerendipityController::class, 'update'])->name('serendipities.update');

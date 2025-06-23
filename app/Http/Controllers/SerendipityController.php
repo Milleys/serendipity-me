@@ -140,6 +140,14 @@ class SerendipityController extends Controller
                 return redirect()->back()->with('success', 'Serendipity updated successfully!');
             }
 
+
+            public function share($id)
+                {
+                    $serendipity = Serendipity::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
+                    return view('serendipity-story', compact('serendipity'));
+                }
+
+
         
         
 

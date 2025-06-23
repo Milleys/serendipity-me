@@ -122,20 +122,35 @@
                             {{-- Rating --}}
                             <div>
                                 <label class="text-lg font-medium text-gray-900 mb-4 block">How was it?</label>
-                                <div class="flex space-x-6">
-                                    <label class="flex items-center space-x-2 cursor-pointer">
-                                        <input type="radio" name="rating" value="3" class="text-green-600" />
-                                        <span class="text-green-600 font-medium">🥰</span>
+                                <div class="flex space-x-6 text-lg">
+                                    {{-- Fun --}}
+                                    <label class="flex flex-col items-center cursor-pointer transition hover:scale-110">
+                                        <input type="radio" name="rating" value="3" class="sr-only peer" />
+                                        <div class="bg-green-100 text-green-600 peer-checked:bg-green-600 peer-checked:text-white p-3 rounded-full transition-all">
+                                            🤩
+                                        </div>
+                                        <span class="mt-1 text-sm font-semibold text-green-600 peer-checked:text-green-700">Fun</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 cursor-pointer">
-                                        <input type="radio" name="rating" value="2" class="text-yellow-600" />
-                                        <span class="text-yellow-600 font-medium">😊</span>
+
+                                    {{-- Mid --}}
+                                    <label class="flex flex-col items-center cursor-pointer transition hover:scale-110">
+                                        <input type="radio" name="rating" value="2" class="sr-only peer" />
+                                        <div class="bg-yellow-100 text-yellow-600 peer-checked:bg-yellow-400 peer-checked:text-white p-3 rounded-full transition-all">
+                                            😐
+                                        </div>
+                                        <span class="mt-1 text-sm font-semibold text-yellow-600 peer-checked:text-yellow-700">Mid</span>
                                     </label>
-                                    <label class="flex items-center space-x-2 cursor-pointer">
-                                        <input type="radio" name="rating" value="1" class="text-red-600" />
-                                        <span class="text-red-600 font-medium">😣</span>
+
+                                    {{-- Nah --}}
+                                    <label class="flex flex-col items-center cursor-pointer transition hover:scale-110">
+                                        <input type="radio" name="rating" value="1" class="sr-only peer" />
+                                        <div class="bg-red-100 text-red-600 peer-checked:bg-red-500 peer-checked:text-white p-3 rounded-full transition-all">
+                                            😤
+                                        </div>
+                                        <span class="mt-1 text-sm font-semibold text-red-500 peer-checked:text-red-600">Nah</span>
                                     </label>
                                 </div>
+
                             </div>
 
                                                 {{-- Submit Button --}}
