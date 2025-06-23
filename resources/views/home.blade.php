@@ -91,7 +91,8 @@
             @csrf
         <!-- Serendipity Button -->
          
-         
+      
+        
         <button type = "submit" class="cursor-pointer group bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center space-x-2">
             <span>✨ My Serendipity</span>
         </button>
@@ -112,12 +113,12 @@
             </button>
         </form>
 
-
+        
         <!-- Subtitle -->
         <p class="mt-4 text-gray-500 text-center max-w-md px-4">
             Discover unexpected moments and create beautiful memories
         </p>
-
+   
 
 
         
