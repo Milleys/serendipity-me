@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Models\Serendipity;
+use Illuminate\Support\Facades\Auth;
 
 class SerendipityController extends Controller
 {
@@ -50,6 +52,24 @@ class SerendipityController extends Controller
             }
 
             
+         
+        public function save(Request $request)
+        {
+            $validated = $request->validate([
+                'activity' => 'required|string|max:255',
+                'imgurl' => 'nullable|url',
+                'description' => 'nullable|string',
+            ]);
+
+            Serendipity::create([
+                'user_id' => Auth::id(),
+                'activity' => $validated['activity'],
+                'imgurl' => $validated['imgurl'] ?? null,
+                'description' => $validated['description'] ?? null,
+            ]);
+
+            return back()->with('success', 'Serendipity saved successfully!');
+        }   
         
 
 }

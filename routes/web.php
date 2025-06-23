@@ -6,14 +6,19 @@ use App\Http\Controllers\RegisterUser;
 use App\Http\Controllers\LoginUser;
 use App\Http\Controllers\SerendipityController;
 
+
+//get routes
 Route::get('/', function () {
-    return view('home');
-})->middleware('auth')->name('home-page');
+    if (auth()->check()) {
+        return redirect('/home');
+    }
+    return view('dashboard');
+})->name('dashboard-page');
 
 //named routes
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name("dashboard-page");
+Route::get('/home', function () {
+    return view('home');
+})->middleware('auth')->name("home-page");
 
 
 
@@ -23,17 +28,26 @@ Route::get('/contactus', function () {
 })->name("contactus-page");
 
 
+Route::middleware('guest')->group(function() {
+    //dashboard
+    Route::get('/login', function () {
+        return view('dashboard');
+    })->name("login");
 
-//dashboard
-Route::get('/login', function () {
-    return view('dashboard');
-})->name("login");
+    
+    //dashboard
+    Route::get('/register', function () {
+        return view('register');
+    })->name("register");
+
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('dashboard-page');
+
+});
 
 
-//dashboard
-Route::get('/register', function () {
-    return view('register');
-})->name("register");
+
 
 //dashboard
 Route::get('/complete-profile', function () {
@@ -41,17 +55,23 @@ Route::get('/complete-profile', function () {
 })->name("complete-profile");
 
 
+
+
+//post routes
+
 //My Serendipity Button
 Route::post('/serendipity-submit', [SerendipityController::class, 'fetchActivity'])->name('Serendipity-submit');
-
-
-
 Route::post('/register-submit', [RegisterUser::class, 'store'])->name('register-submit');
 Route::post('/login', [LoginUser::class, 'authenticate'])->name('login-user');
+
+//add serentipity to account
+Route::post('/save-serendipity', [SerendipityController::class, 'save'])
+    ->name('serendipity.save')
+    ->middleware('auth');
 
 Route::post('/logout', function (Request $request) {
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect('/dashboard');
+    return redirect('/');
 })->name('logout');

@@ -69,9 +69,7 @@
 
                 <!-- Sparkle Icon -->
                 <div class="absolute top-4 right-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white opacity-80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" />
-                    </svg>
+                <span class="text-purple-400 text-xl">💫</span> 
                 </div>
             </div>
         </div>
@@ -85,28 +83,58 @@
 
         
 
+               
+
+
+
         <form  method = "POST" action="{{route('Serendipity-submit')}}">
             @csrf
         <!-- Serendipity Button -->
          
+         
         <button type = "submit" class="cursor-pointer group bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center space-x-2">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2z" />
-            </svg>
-            <span>My Serendipity</span>
+            <span>✨ My Serendipity</span>
         </button>
 
         </form>
+
+        <form action="{{ route('serendipity.save') }}" method="post">
+        @csrf
+            <input type="hidden" name="activity" value="{{ session('activityData')['activity'] ?? '' }}">
+            <input type="hidden" name="description" value="{{ session('activityData')['description'] ?? '' }}">
+            <input type="hidden" name="imgurl" value="{{ session('imageUrl') ?? ''}}">
+            
+            
+           
+
+            <button type ="submit" class="cursor-pointer mt-2 bg-white/10 backdrop-blur-md text-black/70 border border-black/20 px-4 py-1 rounded-full font-small transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/20">
+                I'll do this
+            </button>
+        </form>
+
 
         <!-- Subtitle -->
         <p class="mt-4 text-gray-500 text-center max-w-md px-4">
             Discover unexpected moments and create beautiful memories
         </p>
 
-       
+
+
+        
 
 </div>
 @include('layout.upcoming-events')
 
+
+
+<script>
+// Push current URL to history stack
+history.pushState(null, null, location.href);
+
+// When back is pressed, push forward again
+window.onpopstate = function () {
+history.go(1);
+};
+</script>
 @endsection
 
