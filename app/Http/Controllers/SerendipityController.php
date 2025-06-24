@@ -10,9 +10,31 @@ use Illuminate\Support\Facades\Auth;
 class SerendipityController extends Controller
 {
     //
+        public function index()
+        {
+            $user = Auth::user();
+            $serendipityCount = $user->serendipities()->count();
+            $CompletedSerendipityCount = $user->serendipities()
+                                                ->whereNotNull('completed_at')
+                                                ->count();
+            $PendingSerendipityCount = $user->serendipities()
+                                            ->whereNull('completed_at')
+                                            ->count();
+        
+            return view('home', compact('serendipityCount','CompletedSerendipityCount','PendingSerendipityCount'));
+        }
+    
 
          public function fetchActivity(Request $request)
             {
+                $user = Auth::user();
+                $completedActivityIds = $user->serendipities()
+                ->whereNotNull('completed_at')
+                ->pluck('activity_id')
+                ->toArray();
+
+
+
                 $jsonPath = public_path('storage/activities.json');
                 $jsonContent = file_get_contents($jsonPath);
                 $activitiesArray = json_decode($jsonContent, true);
@@ -24,12 +46,28 @@ class SerendipityController extends Controller
                     ]);
                 }
 
+                // Filter out already completed activities
+                $availableActivities = array_filter($activitiesArray, function ($activity) use ($completedActivityIds) {
+                    return !in_array($activity['activity_id'], $completedActivityIds);
+                });
+
+                // If all activities are completed
+                if (empty($availableActivities)) {
+                    return back()->with('activityData', [
+                        'activity' => 'You have already completed all available activities!',
+                        'type' => 'info',
+                    ]);
+                }
+
+             
                 // Pick a random activity
-                $activityData = $activitiesArray[array_rand($activitiesArray)];
+               // Pick a random available activity
+                $activityData = $availableActivities[array_rand($availableActivities)];
 
                 $activity = $activityData['activity'];
                 $description = $activityData['description'];
                 $for_couples = $activityData['for_couples'];
+                $activity_id = $activityData['activity_id'];
 
                 // Get image from Pixabay
                 $pixabayResponse = Http::get('https://pixabay.com/api/', [
@@ -64,6 +102,7 @@ class SerendipityController extends Controller
                 'activity' => 'required|string|max:255',
                 'imgurl' => 'nullable|url',
                 'description' => 'nullable|string',
+                'activity_id' => 'required|numeric',
             ]);
 
             Serendipity::create([
@@ -71,6 +110,7 @@ class SerendipityController extends Controller
                 'activity' => $validated['activity'],
                 'imgurl' => $validated['imgurl'] ?? null,
                 'description' => $validated['description'] ?? null,
+                'activity_id' => $validated['activity_id'] ?? null,
             ]);
 
             return redirect()->back()->with('success', 'Serendipity updated successfully!');

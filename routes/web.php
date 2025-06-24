@@ -17,9 +17,7 @@ Route::get('/', function () {
 })->name('dashboard-page');
 
 //named routes
-Route::get('/home', function () {
-    return view('home');
-})->middleware('auth')->name("home-page");
+Route::get('/home', [SerendipityController::class, 'index'])->middleware('auth')->name("home-page");
 
 
 

@@ -16,7 +16,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
             </svg>
-            Download
+            Save
             </button>
         </div>
 
@@ -51,10 +51,11 @@
 
             {{-- Bottom Glass Details --}}
             <div class="absolute bottom-0 left-0 w-full p-5 z-10">
-                <div class="bg-black/80 rounded-2xl border border-white/20 p-5 shadow-lg space-y-3 text-white">
+                <div class="bg-black/60 rounded-2xl border border-white/20 p-5 shadow-lg space-y-3 text-white">
                     
                     {{-- Title --}}
                     <h2 class="text-xl font-bold">{{ $serendipity->activity }}</h2>
+                    
                     
                     {{-- Description --}}
                     <p class="text-sm text-white/90">
@@ -75,10 +76,11 @@
                             <span>{{ $serendipity->completed_at ? \Carbon\Carbon::parse($serendipity->completed_at)->format('F j') : 'N/A' }}</span>
                         </div>
                         <div class="flex items-center space-x-1">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 12l4.243-4.243a6 6 0 10-8.485 8.485L12 13.414l4.243 4.243a6 6 0 001.414-1.414z"/>
-                            </svg>
-                            <span>Location</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm0 0c-3.866 0-7 3.134-7 7 0 1.657 1.343 3 3 3h8c1.657 0 3-1.343 3-3 0-3.866-3.134-7-7-7z" />
+                        </svg>
+                            <span>{{ Auth::user()->username }}</span>
                         </div>
                     </div>
 

@@ -2,19 +2,19 @@
     $stats = [
         [
             'title' => 'Serendipities',
-            'value' => 12,
+            'value' =>  $serendipityCount,
             'icon' => 'activity',
             'color' => 'text-blue-600',
         ],
         [
-            'title' => 'Connections',
-            'value' => 8,
+            'title' => 'Completed',
+            'value' =>  $CompletedSerendipityCount,
             'icon' => 'users',
             'color' => 'text-green-600',
         ],
         [
             'title' => 'Events',
-            'value' => 3,
+            'value' => 4,
             'icon' => 'calendar',
             'color' => 'text-purple-600',
         ],

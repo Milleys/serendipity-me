@@ -78,6 +78,7 @@
                     <div class = "mb-2">
                         <p class=" text-lg text-center text-purple-400 font-medium italic">"{{ session('activityData.activity') }}"</p>
                         <p class=" text-lg text-center text-purple-400 font-medium italic">{{ session('activityData.description') }}</p>
+                       
                     </div>
                 @endif
 
@@ -103,14 +104,21 @@
         @csrf
             <input type="hidden" name="activity" value="{{ session('activityData')['activity'] ?? '' }}">
             <input type="hidden" name="description" value="{{ session('activityData')['description'] ?? '' }}">
+            <input type="hidden" name="activity_id" value="{{ session('activityData')['activity_id'] ?? '' }}">
             <input type="hidden" name="imgurl" value="{{ session('imageUrl') ?? ''}}">
             
             
            
+            @if ($PendingSerendipityCount > 0)
+                <button type="submit" disabled class="cursor-not-allowed mt-2 bg-white/10 backdrop-blur-md text-black/50 border border-black/20 px-4 py-1 rounded-full text-sm">
+                    You still have a pending serendipity
+                </button>
+            @else
+                <button type="submit" class="mt-2 bg-white/10 backdrop-blur-md text-black/70 border border-black/20 px-4 py-1 rounded-full text-sm transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/20">
+                    I'll do this
+                </button>
+            @endif
 
-            <button type ="submit" class="cursor-pointer mt-2 bg-white/10 backdrop-blur-md text-black/70 border border-black/20 px-4 py-1 rounded-full font-small transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-white/20">
-                I'll do this
-            </button>
         </form>
 
         

@@ -22,6 +22,7 @@ class Serendipity extends Model
         'completed_at',
         'comment',
         'image_path',
+        'activity_id',
     
     ];
 
