@@ -12,7 +12,7 @@
                 </svg>
                 Back
             </a>
-            <button  onclick="downloadStoryCard()" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-1.5 text-sm rounded-full shadow-md flex items-center">
+            <button  onclick="downloadStoryCard()" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-1.5 text-sm rounded-full shadow-md flex items-center cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
             </svg>
@@ -99,13 +99,13 @@
 
 @section('scripts')
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js" integrity="sha512-wUa0ktp10dgVVhWdRVfcUO4vHS0ryT42WOEcXjVVF2+2rcYBKTY7Yx7JCEzjWgPV+rj2EDUr8TwsoWF6IoIOPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js" integrity="sha512-01CJ9/g7e8cUmY0DFTMcUw/ikS799FHiOA0eyHsUWfOetgbx/t6oV4otQ5zXKQyIrQGTHSmRVPIgrgLcZi/WMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
 function downloadStoryCard() {
     const storyCard = document.getElementById('story-card');
 
-    const scale = 5; // Increase for higher resolution (2 or 3 is usually good)
+    const scale = 3; // Increase for higher resolution (2 or 3 is usually good)
 
     const style = {
         transform: 'scale(' + scale + ')',
