@@ -38,10 +38,8 @@
                                     d="M22 12h-4l-3 9L9 3 6 12H2" />
                             </svg>
                         @elseif ($stat['icon'] === 'users')
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 20h5v-2a4 4 0 00-5-4m-6 6H2v-2a4 4 0 015-4m9-4a4 4 0 11-8 0 4 4 0 018 0z" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
                         @elseif ($stat['icon'] === 'calendar')
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none"

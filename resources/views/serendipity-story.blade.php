@@ -123,13 +123,13 @@ function downloadStoryCard() {
     domtoimage.toPng(storyCard, param)
         .then(function (dataUrl) {
             const link = document.createElement('a');
-            link.download = '{{ $serendipity->activity }} - {{ Auth::user()->username }}.png';
+            link.download = '{{ $serendipity->completed_at }}-{{ $serendipity->activity }}-{{ Auth::user()->username }}.png';
             link.href = dataUrl;
             link.click();
         })
         .catch(function (error) {
             console.error('Error rendering the story card:', error);
-            alert("Failed to capture image. Try removing blur or complex gradients.");
+            alert("Failed to capture image");
         });
 }
 </script>

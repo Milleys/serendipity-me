@@ -66,14 +66,13 @@ class SerendipityController extends Controller
 
                 $activity = $activityData['activity'];
                 $description = $activityData['description'];
-                $for_couples = $activityData['for_couples'];
                 $activity_id = $activityData['activity_id'];
 
                 // Get image from Pixabay
                 $pixabayResponse = Http::get('https://pixabay.com/api/', [
                     'key' => '50924618-29a39a9600a657ed5fe9dc9db', // Replace with your actual API key
                     'q' => $activity,
-                    'image_type' => 'illustration',
+                    'image_type' => 'all',
                     'safesearch' => 'true',
                     'per_page' => 5,
                     'page' => 1,

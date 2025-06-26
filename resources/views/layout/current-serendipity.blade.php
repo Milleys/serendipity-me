@@ -18,7 +18,7 @@
         <div class="relative">
             <div class="w-full h-50 rounded-lg overflow-hidden border border-black/20">
                 <img
-                    src="{{ $serendipity->imgurl }}"
+                    src="{{ $serendipity->imgurl ?? asset('images/serendipity_cover.jpg') }}"
                     alt="Current serendipity"
                     class="w-full h-full object-cover"
                 />
@@ -117,6 +117,25 @@
                                     placeholder="Tell us about your serendipitous moment..."
                                     class="w-full min-h-[100px] resize-none rounded border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:outline-none p-3"
                                 ></textarea>
+                            </div>
+
+                            <div>
+                                <label for="location" class="text-sm font-medium text-purple-600 mb-2 block cursor-pointer"  onclick="document.getElementById('location').classList.remove('hidden')">Add Location</label>
+                                <div  id="location"  class="flex items-center space-x-2 hidden">
+                                <input 
+                                   
+                                    name="location" 
+                                    placeholder="Where is your serendipitous moment?"
+                                    class="w-sm resize-none rounded border border-gray-300 focus:ring-2 focus:ring-purple-500 focus:outline-none p-1"
+                                />
+
+                                <button type="button" class="cursor-pointer" onclick="document.getElementById('location').classList.add('hidden')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                </div>
+
                             </div>
 
                             {{-- Rating --}}

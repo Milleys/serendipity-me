@@ -77,7 +77,7 @@
         @if(session('activityData'))
                     <div class = "mb-2">
                         <p class=" text-lg text-center text-purple-400 font-medium italic">"{{ session('activityData.activity') }}"</p>
-                        <p class=" text-lg text-center text-purple-400 font-medium italic">{{ session('activityData.description') }}</p>
+                        <p class=" text-lg text-center text-purple-400 font-sm italic">{{ session('activityData.description') }}</p>
                        
                     </div>
                 @endif
