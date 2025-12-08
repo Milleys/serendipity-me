@@ -80,6 +80,10 @@ Route::get('/serendipity/{id}', [SerendipityController::class, 'share'])->name('
 //update serendipity
 Route::put('/serendipities/{id}', [SerendipityController::class, 'update'])->middleware('auth')->name('serendipities.update');
 
+Route::delete('/posts/{id}', [SerendipityController::class, 'destroy'])->name('posts.destroy');
+
+
+
 Route::post('/logout', function (Request $request) {
     Auth::logout();
     $request->session()->invalidate();

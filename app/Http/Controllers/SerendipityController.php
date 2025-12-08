@@ -185,6 +185,15 @@ class SerendipityController extends Controller
                     $serendipity = Serendipity::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
                     return view('serendipity-story', compact('serendipity'));
                 }
+//delete
+
+                public function destroy($id)
+                {
+                    $post = Serendipity::findOrFail($id);
+                    $post->delete();
+
+                    return redirect()->back()->with('success', 'Post deleted successfully!');
+                }
 
 
         
