@@ -4,7 +4,7 @@
             <!-- Logo/Brand -->
             <div class="flex items-center">
                 <h2 class="text-xl font-bold text-gray-900 tracking-tight">
-                    SerendipityMe
+                    Serendipity<span class="text-purple-600">Me</span>
                 </h2>
             </div>
 

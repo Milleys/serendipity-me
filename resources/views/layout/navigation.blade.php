@@ -4,9 +4,16 @@
             <!-- Logo -->
             <div class="flex-shrink-0">
                 <a href="{{route('dashboard-page')}}">
-                <h1 class="text-2xl font-bold tracking-tight">
-                    <span class="text-gray-900">Serendipity</span><span class="text-purple-600">Me🦋</span>
-                </h1>
+            <h1 class="text-2xl font-bold tracking-tight flex items-center">
+                  <img 
+                    src="{{ asset('images/serendipity254.png') }}" 
+                    class=" h-10 inline-block"
+                    alt=""
+                >
+                <span class="text-gray-900">erendipity</span>
+                <span class="text-purple-600">Me</span>
+              
+            </h1>
 
                 </a>
             </div>
@@ -14,13 +21,13 @@
             <!-- Desktop Menu -->
             <div class="hidden md:block">
                 <div class="ml-10 flex items-baseline space-x-8">
-                    <a href="{{route("home-page")}}" class="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                    <a href="{{route('home-page')}}" class="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
                         Home
                     </a>
-                    <a href="{{route("profile")}}" class="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                    <a href="{{route('profile')}}" class="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
                         Profile
                     </a>
-                    <a href="{{route("contactus-page")}}" class="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
+                    <a href="{{route('contactus-page')}}" class="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium transition-colors duration-200">
                         Contact Us
                     </a>
                 </div>

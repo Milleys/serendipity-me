@@ -61,7 +61,7 @@
                     </div>
                 </div>
             </a>
-            </div>
+        </div>
         <!--   </a> -->
 
         @endforeach

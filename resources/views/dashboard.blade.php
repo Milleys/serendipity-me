@@ -37,7 +37,12 @@
             <div class="text-center">
                 <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
                     Discover Your
-                    <span class="text-purple-600 block">Serendipity</span>
+                    <span class="text-purple-600 block mt-2"> <img 
+                    src="{{ asset('images/serendipity254.png') }}" 
+                    class=" h-20 inline-block"
+                    alt=""
+                >erendipity </span> 
+                    
                 </h1>
                 <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
                     Find unexpected connections, moments of joy, and meaningful experiences 

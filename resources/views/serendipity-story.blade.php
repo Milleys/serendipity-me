@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('content')
-<div class="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 p-6">
+<div id="color-bg" class="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 p-6">
     <div class="max-w-md mx-auto">
 
         {{-- Header --}}
@@ -132,7 +132,35 @@ function downloadStoryCard() {
             alert("Failed to capture image");
         });
 }
+
+
+ const img = document.getElementById('mainImage');
+    const container = document.getElementById('color-bg');
+
+    img.onload = function () {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+
+        ctx.drawImage(img, 0, 0);
+
+        // Get pixel data
+        const pixelData = ctx.getImageData(0, 0, 1, 1).data;
+
+        // Extract RGB
+        const r = pixelData[0];
+        const g = pixelData[1];
+        const b = pixelData[2];
+
+        // Set background
+        container.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    }
 </script>
+
+
+
 
 
 @endsection
