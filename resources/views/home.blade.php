@@ -163,7 +163,7 @@
                 </button>
             @else
                 <button type="submit" class="btn-glass text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 transform hover:scale-105">
-                    💾 I'll do this
+                    💾 Save This Moment
                 </button>
             @endif
         </form>
